@@ -22,6 +22,10 @@ function getRepoContributors(repoOwner, repoName, cb) {
 }
 
 getRepoContributors(repoOwner, repoName, function(err, result) {
+
+  if((repoOwner || repoName) === undefined){
+    console.log("\n*** Please add Repository Owner and Name to work ***\n");
+  }else{
   console.log("Errors:", err);
   var contributors = JSON.parse(result);
   var login = "";
@@ -33,7 +37,7 @@ getRepoContributors(repoOwner, repoName, function(err, result) {
 //  console.log(`login:${login}` , `filePath: ${url}` )
     downloadImageByURL(url,login);
   });
-
+  }
 });
 
 function downloadImageByURL(url, filePath) {
@@ -41,5 +45,9 @@ function downloadImageByURL(url, filePath) {
          .pipe(fs.createWriteStream(`./avatars/${filePath}.jpg`));
 
 }
+
+
+
+
 
 
