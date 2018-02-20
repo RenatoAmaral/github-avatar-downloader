@@ -28,3 +28,10 @@ getRepoContributors("jquery", "jquery", function(err, result) {
 });
 
 
+function downloadImageByURL() {
+  request.get('https://avatars2.githubusercontent.com/u/2741?v=3&s=466')
+         .pipe(fs.createWriteStream('./avatars/kvirani.jpg'));
+
+
+}
+
